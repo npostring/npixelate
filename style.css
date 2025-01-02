@@ -1,0 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=DotGothic16&display=swap');
+html, body, * {
+    font-family: 'DotGothic16', serif !important;
+    font-weight: 400;
+    font-size: 14px;
+}
