@@ -42,7 +42,6 @@ def initialize():
 
     # apply css
     with open('style.css') as css:
-        pass
         st.markdown(f'<style>{css.read()}</style>', unsafe_allow_html=True)
 
 

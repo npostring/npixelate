@@ -1,4 +1,5 @@
 # NPixelate
+![banner.png](banner.png)
 App for pixelating with various algorithms.
 - Web app: https://npixelate.dozingwhale.net/
 - Source code: https://github.com/npostring/npixelate
