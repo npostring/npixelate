@@ -170,9 +170,9 @@ def convert(img, pixel_size=8, color_num=4, color_thresh=10, mode='kmeans', is_n
     if before_img.shape[2] == 4:
         img = img[:, :, :3]
 
-    # resize to 1500px or less when the image size is huge
+    # resize to 1000px if the image is larger than 1000px
     ratio = None
-    max_size = 1500
+    max_size = 1000
     if img.shape[0] > max_size or img.shape[1] > max_size:
         ratio = max_size / max(img.shape[0], img.shape[1])
         img = cv2.resize(img, None, fx=ratio, fy=ratio, interpolation=cv2.INTER_NEAREST)
@@ -191,6 +191,7 @@ def convert(img, pixel_size=8, color_num=4, color_thresh=10, mode='kmeans', is_n
     elif mode == 'ndcd':
         img = ndcd_clustering(img, pixel_size)
 
+    # restore size
     if ratio is not None:
         img = cv2.resize(img, (before_img.shape[1], before_img.shape[0]), interpolation=cv2.INTER_NEAREST)
    
