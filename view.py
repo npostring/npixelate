@@ -5,13 +5,14 @@ import streamlit as st
 import model
 
 
-# wide mode
+# set page config
 st.set_page_config(
-    page_title='npixelate',
+    page_title='NPixelate',
     page_icon='💠',
     layout="centered",
-    initial_sidebar_state="expanded"
+    initial_sidebar_state="collapsed"
     )
+
 
 def initialize():
     # initialize session state
@@ -40,7 +41,7 @@ def initialize():
         </style>
         """, unsafe_allow_html=True)
 
-    # apply css
+    # apply font css
     with open('style.css') as css:
         st.markdown(f'<style>{css.read()}</style>', unsafe_allow_html=True)
 
@@ -48,17 +49,17 @@ def initialize():
 def main():
     # sidebar
     with st.sidebar:
-        st.header('How to use')
-        st.write('１.「Browse files」をクリックし画像をアップロード')
-        st.write('２. パラメーターを設定')
-        st.write('３.「ドット化」ボタンをクリックしドット化')
-        st.write('４.「ダウンロード」ボタンをクリックしダウンロード')
-        st.header('Author')
-        st.write(':red[npostring]')
-        st.link_button('Website', 'https://www.dozingwhale.net')
-        st.link_button('GitHub', 'https://github.com/npostring')
-        st.link_button('Twitter', 'https://x.com/npostring')
-        st.write('Ⓒ 2025 Dozing Whale')
+        st.header('使い方')
+        st.markdown('1. 「Browse files」をクリックし画像をアップロード')
+        st.markdown('2. パラメーターを設定')
+        st.markdown('3. 「ドット化」ボタンをクリックしドット化')
+        st.markdown('4. 「ダウンロード」ボタンをクリックしダウンロード')
+        st.header('管理人')
+        st.write('npostring')
+        st.link_button('Website', 'https://www.dozingwhale.net', use_container_width=True)
+        st.link_button('GitHub', 'https://github.com/npostring', use_container_width=True)
+        st.link_button('Twitter', 'https://x.com/npostring', use_container_width=True)
+        st.write('Ⓒ 2019-2025 [DOZING WHALE](https://www.dozingwhale.net)')
 
     # title
     st.markdown("<h1 style='text-align: center; padding-top: 0rem'>NPixelate (ドット絵変換ツール)</h1>", unsafe_allow_html=True)
@@ -93,10 +94,10 @@ def main():
             if st.session_state.mode == 'ndcd':
                 pass
 
-    # Pixelate button
+    # pixelate button
     pixelate_button = st.button('ドット化', use_container_width=True, disabled='uploaded_img' not in st.session_state)
     if pixelate_button:
-        # Convert uploaded file to OpenCV format
+        # convert uploaded file to OpenCV format
         file_bytes = np.asarray(bytearray(st.session_state.uploaded_img.read()), dtype=np.uint8)
         cv_img = cv2.imdecode(file_bytes, 1)
 
@@ -136,6 +137,7 @@ def main():
                        mime='image/png',
                        use_container_width=True,
                        disabled='pixelated_img' not in st.session_state)
+
 
 if __name__ == '__main__':
     initialize()

@@ -1,6 +1,6 @@
 # NPixelate
 ![banner.png](banner.png)
-App for pixelating with various algorithms.
+WEB application implementing multiple methods of pixelating.
 - Web app: https://npixelate.dozingwhale.net/
 - Source code: https://github.com/npostring/npixelate
 
@@ -11,7 +11,7 @@ $ pip install -r requirements.txt
 $ streamlit run view.py
 ```
 
-You can run it from the following URL.
+You can pixelate images from the following URL.
 ```
 http://localhost:8501
 ```
